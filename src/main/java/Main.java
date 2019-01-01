@@ -17,7 +17,7 @@ public class Main {
     }
 
     private static void loadLevelEditor() {
-        new LevelEditor("assets/map", "png", 20, 20, 40);
+        new LevelEditor("/map", "png", 20, 20, 40);
     }
 
     private static void loadGame() {

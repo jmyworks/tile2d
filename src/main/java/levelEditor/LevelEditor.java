@@ -33,13 +33,14 @@ public class LevelEditor extends JPanel {
         int index = 0;
 
         while (true) {
-            File file = new File(imagesFolder + "/" + String.valueOf(index++) + "." + imageExt);
-            if (!file.exists() || !file.isFile()) {
+            InputStream is = getClass().getResourceAsStream(imagesFolder + "/" + String.valueOf(index++) + "." + imageExt);
+
+            if (is == null) {
                 break;
             }
 
             try {
-                images.add(ImageIO.read(file));
+                images.add(ImageIO.read(is));
             } catch (IOException e) {
                 break;
             }
