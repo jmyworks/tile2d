@@ -1,9 +1,9 @@
-package koumuu.game.engine;
+package engine;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class ImageAnimation extends Animation implements CollisionComponent {
+public class ImageAnimation extends Animation {
     private ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
 
     public ImageAnimation(ArrayList<BufferedImage> images, int x, int y, double speed) {

@@ -1,4 +1,4 @@
-package koumuu.game.engine;
+package engine;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

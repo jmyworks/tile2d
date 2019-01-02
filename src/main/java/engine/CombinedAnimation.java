@@ -1,10 +1,10 @@
-package koumuu.game.engine;
+package engine;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class CombinedAnimation extends Animation implements CollisionComponent {
+public class CombinedAnimation extends Animation {
     private ArrayList<Animation> animations;
 
     public CombinedAnimation(Animation[] animations) {

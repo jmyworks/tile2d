@@ -1,4 +1,4 @@
-package koumuu.game.engine;
+package engine;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

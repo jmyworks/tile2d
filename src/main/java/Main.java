@@ -1,5 +1,5 @@
-import koumuu.game.engine.*;
-import koumuu.game.levelEditor.LevelEditor;
+import engine.*;
+import levelEditor.LevelEditor;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -169,7 +169,7 @@ class GameImpl extends Game {
     }
 }
 
-class Monkey extends koumuu.game.engine.Character {
+class Monkey extends engine.Character {
     public Monkey(Game game, String imageFolder) {
         super(game, imageFolder);
     }

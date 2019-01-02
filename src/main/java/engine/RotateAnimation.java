@@ -1,10 +1,10 @@
-package koumuu.game.engine;
+package engine;
 
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
-public class RotateAnimation extends Animation implements CollisionComponent {
+public class RotateAnimation extends Animation {
     public RotateAnimation(BufferedImage image, int x, int y, int speed) {
         super(new AnimationConfig(image, x, y,
                 image.getWidth(null),

@@ -1,4 +1,4 @@
-package koumuu.game.engine;
+package engine;
 
 /*
  * 0             0                       000000 00000000 00000000 00000000

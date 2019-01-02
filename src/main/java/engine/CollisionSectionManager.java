@@ -1,4 +1,4 @@
-package koumuu.game.engine;
+package engine;
 
 import java.util.ArrayList;
 

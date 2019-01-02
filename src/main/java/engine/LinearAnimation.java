@@ -1,8 +1,8 @@
-package koumuu.game.engine;
+package engine;
 
 import java.awt.image.BufferedImage;
 
-public class LinearAnimation extends Animation implements CollisionComponent {
+public class LinearAnimation extends Animation {
     private float directX;
     private float directY;
     private double slope;

@@ -1,7 +1,6 @@
-package koumuu.game.levelEditor;
+package levelEditor;
 
-import koumuu.game.engine.TileData;
-
+import engine.TileData;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
