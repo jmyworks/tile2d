@@ -3,6 +3,8 @@ import levelEditor.LevelEditor;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +32,7 @@ class GameImpl extends Game {
     private int currentLevel = 0;
     private ArrayList<Timer> timers = new ArrayList<Timer>();
     private BufferedImage tips;
+    private KeyAdapter reloadKeyAdapter;
 
     public GameImpl(String assetsPath, int tileSize) {
         super(assetsPath, tileSize);
@@ -131,9 +134,28 @@ class GameImpl extends Game {
                 }
             });
         }
+
+        // add reload listener
+        reloadKeyAdapter = new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent keyEvent) {
+                if (keyEvent.getKeyChar() == 'r') {
+                    unload();
+
+                    if (loadLevel(currentLevel)) {
+                        tips = null;
+                        load();
+                    }
+                }
+            }
+        };
+
+        this.addKeyListener(reloadKeyAdapter);
     }
 
     public void unload() {
+        removeKeyListener(reloadKeyAdapter);
+
         // clear timers
         for (Timer timer: timers) {
             timer.cancel();
@@ -145,7 +167,7 @@ class GameImpl extends Game {
     public void showTips(String tips) {
         this.tips = loadImage("tips/" + tips + ".png", 0, false);
 
-        setPreferredBounds(new Dimension(this.tips.getWidth(null), this.tips.getHeight(null)));
+        setSize(new Dimension(this.tips.getWidth(null), this.tips.getHeight(null)));
     }
 
     @Override
