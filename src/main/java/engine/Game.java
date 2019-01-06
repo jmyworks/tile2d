@@ -55,18 +55,22 @@ public class Game extends JPanel implements Runnable {
         loadLevel(0);
 
         // show
-        this.setPreferredBounds(null);
         this.frame.setLocationRelativeTo(null);
+        this.setSize(null);
         this.frame.setVisible(true);
 
         // start painting thread
         new Thread(this).start();
     }
 
-    public void setPreferredBounds(Dimension dimension) {
-        this.frame.setPreferredSize(dimension == null ? new Dimension(cols * tileSize, rows * tileSize) : dimension);
-        this.frame.getContentPane().setPreferredSize(dimension == null ? new Dimension(cols * tileSize, rows * tileSize) : dimension);
+    public void setSize(Dimension dimension) {
+        // call this to make insets valid
         this.frame.pack();
+
+        Dimension size = dimension == null ? new Dimension(cols * tileSize, rows * tileSize) : dimension;
+        Insets insets = this.frame.getInsets();
+
+        this.frame.setSize(size.width + insets.left + insets.right, size.height + insets.top + insets.bottom);
     }
 
     public boolean loadLevel(int levelIndex) {
@@ -84,7 +88,7 @@ public class Game extends JPanel implements Runnable {
             if (encodedTilesData.length > 0) {
                 this.rows = encodedTilesData.length;
                 this.cols = encodedTilesData[0].length;
-                this.setPreferredBounds(null);
+                this.setSize(null);
 
                 // set collision section manager
                 this.collisionSectionManager = new CollisionSectionManager(cols * tileSize, rows * tileSize, 2 * tileSize);
