@@ -1,5 +1,7 @@
 import engine.*;
 import levelEditor.LevelEditor;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,8 +16,56 @@ import java.util.TimerTask;
 
 public class Main {
     public static void main(String[] args) {
-        loadGame();
-//        loadLevelEditor();
+        new GameLoader();
+    }
+}
+
+class GameLoader extends JPanel {
+    private JFrame frame;
+
+    public GameLoader() {
+        this.frame = new JFrame("猿の冒険");
+
+        this.frame.setResizable(false);
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.add(this);
+
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+        JLabel description = new JLabel(new ImageIcon(getClass().getResource("/loader/description.png")));
+        JButton startGame = new JButton("ゲーム開始");
+        JButton launchEditor = new JButton("レベルエディター");
+
+        description.setAlignmentX(Component.CENTER_ALIGNMENT);
+        startGame.setAlignmentX(Component.CENTER_ALIGNMENT);
+        launchEditor.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        startGame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.hide();
+                loadGame();
+            }
+        });
+
+        launchEditor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.hide();
+                loadLevelEditor();
+            }
+        });
+
+        this.setBackground(new Color(0x491773));
+
+        this.add(description);
+        this.add(startGame);
+        this.add(launchEditor);
+
+        // show
+        this.frame.setLocationRelativeTo(null);
+        this.frame.pack();
+        this.frame.setVisible(true);
     }
 
     private static void loadLevelEditor() {
