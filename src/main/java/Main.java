@@ -16,7 +16,11 @@ import java.util.TimerTask;
 
 public class Main {
     public static void main(String[] args) {
-        new GameLoader();
+        try{
+            new GameLoader();
+        } catch (NullPointerException e) {
+            System.out.println("it seems that some assets are not existed");
+        }
     }
 }
 
@@ -32,7 +36,7 @@ class GameLoader extends JPanel {
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        JLabel description = new JLabel(new ImageIcon(getClass().getResource("/loader/description.png")));
+        JLabel description = new JLabel(new ImageIcon(getClass().getResource("/assets/loader/description.png")));
         JButton startGame = new JButton("ゲーム開始");
         JButton launchEditor = new JButton("レベルエディター");
 
@@ -69,11 +73,11 @@ class GameLoader extends JPanel {
     }
 
     private static void loadLevelEditor() {
-        new LevelEditor("/map", "png", 20, 20, 40);
+        new LevelEditor("/assets/map", "png", 20, 20, 40);
     }
 
     private static void loadGame() {
-        new GameImpl("/", 40).load();
+        new GameImpl("/assets/", 40).load();
     }
 }
 

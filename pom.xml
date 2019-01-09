@@ -16,7 +16,7 @@
     <build>
         <resources>
             <resource>
-                <directory>assets</directory>
+                <directory>resources</directory>
                 <includes>
                     <include>**/*.*</include>
                 </includes>
